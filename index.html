@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Generate Password</title>
+    </head>
+    <body>
+        <script>
+            var specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"];
+            var numericChar = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+            var lowerCaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+            var upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+        
+            var specialNumeric = specialChar.concat(numericChar);
+            var specialLower = specialChar.concat(lowerCaseChar);
+            var specialUpper = specialChar.concat(upperCaseChar);
+            var numericLower = numericChar.concat(lowerCaseChar);
+            var numericUpper = numericChar.concat(upperCaseChar);
+            var lowerUpper = lowerCaseChar.concat(upperCaseChar);
+
+            var specialNumLow = specialNumeric.concat(lowerCaseChar);
+            var specialNumUp = specialNumeric.concat(upperCaseChar);
+            var specialLowUp = specialChar.concat(lowerUpper);
+            var numLowUp = numericChar.concat(lowerUpper);
+        
+            var allChar = specialNumeric.concat(lowerUpper);
+
+            var password = "";
+            var randomIndex;
+
+            var passwordLength = prompt("Please enter the length of your password. Must be between 8-128 characters.");
+
+            while((passwordLength < 8) || (passwordLength > 128)){
+                alert("Password doesn't meet length requirement! Try again.");
+                passwordLength = prompt("Enter a value from 8-128.");
+            }
+        
+            var passwordType = prompt("Now please enter whether you want your password to contain special, numeric, lowercase or uppercase characters or a combination of any.");
+
+            for(var i = 0; i < passwordLength; i++){
+                if(passwordType === "special"){
+                    randomIndex = Math.floor(Math.random() * specialChar.length); 
+                    password = password + specialChar[randomIndex];
+                }
+                else if(passwordType === "numeric"){
+                    randomIndex = Math.floor(Math.random() * numericChar.length);
+                    password = password + numericChar[randomIndex];
+                }
+                else if(passwordType === "lowercase"){
+                    randomIndex = Math.floor(Math.random() * lowerCaseChar.length);
+                    password = password + lowerCaseChar[randomIndex];
+                }
+                else if(passwordType === "uppercase"){
+                    randomIndex = Math.floor(Math.random() * upperCaseChar.length);
+                    password = password + upperCaseChar[randomIndex];
+                }
+                else if(passwordType === "special numeric" ){
+                    randomIndex = Math.floor(Math.random() * specialNumeric.length);
+                    password = password + specialNumeric[randomIndex];
+                }
+                else if(passwordType === "special lowercase" ){
+                    randomIndex = Math.floor(Math.random() * specialLower.length);
+                    password = password + specialLower[randomIndex];
+                }
+                else if(passwordType === "special uppercase" ){
+                    randomIndex = Math.floor(Math.random() * specialUpper.length);
+                    password = password + specialUpper[randomIndex];
+                }
+                else if(passwordType === "numeric lowercase" ){
+                    randomIndex = Math.floor(Math.random() * numericLower.length);
+                    password = password + numericLower[randomIndex];
+                }
+                else if(passwordType === "numeric uppercase" ){
+                    randomIndex = Math.floor(Math.random() * numericUpper.length);
+                    password = password + numericUpper[randomIndex];
+                }
+                else if(passwordType === "lowercase uppercase" ){
+                    randomIndex = Math.floor(Math.random() * lowerUpper.length);
+                    password = password + lowerUpper[randomIndex];
+                }
+                else if(passwordType === "special numeric lowercase"){
+                    randomIndex = Math.floor(Math.random() * specialNumLow.length);
+                    password = password + specialNumLow[randomIndex];
+                }
+                else if(passwordType === "special numeric uppercase"){
+                    randomIndex = Math.floor(Math.random() * specialNumUp.length);
+                    password = password + specialNumUp[randomIndex];
+                }
+                else if(passwordType === "special lowercase uppercase"){
+                    randomIndex = Math.floor(Math.random() * specialLowUp.length);
+                    password = password + specialLowUp[randomIndex];
+                }
+                else if(passwordType === "numeric lowercase uppercase"){
+                    randomIndex = Math.floor(Math.random() * numLowUp.length);
+                    password = password + numLowUp[randomIndex];
+                }
+                else if(passwordType === "special numeric lowercase uppercase" ){
+                    randomIndex = Math.floor(Math.random() * allChar.length);
+                    password = password + allChar[randomIndex];
+                }
+            }
+
+            alert("Password: " + password);
+    
+        </script>
+    </body>
+</html>
